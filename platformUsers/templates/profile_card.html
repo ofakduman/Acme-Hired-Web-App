@@ -1,0 +1,76 @@
+{% load static  %}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" type = "text/css"
+     href="{% static '/profile_card.css' %}">
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <h2>{{ user.name }} </h2>
+                    {% if user.bio != None %}
+                        <p><strong>About: </strong>{{ user.bio }}</p>
+                    {% endif %}
+                    {% if user.blog != None %}
+                    <p><strong>Blog: </strong> <a href="https://{{user.blog}}" target="_blank"> {{ user.blog }}</a></p>
+                    {% endif %}
+                    <p><strong>login: </strong>{{user.login}} </p>
+                    {% if user.label != None %}
+                        <p><strong>Labels: </strong>{{user.label}}</p>
+                    {% endif %}
+                    {% if user.company != None %}
+                        <p><strong>Company: </strong>{{user.company}}</p>
+                    {% endif %}
+                    {% if user.location != None %}
+                        <p><strong>Location: </strong>{{user.location}}</p>
+                    {% endif %}
+                </div>             
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                        <img src="{{ user.avatar_url }}" alt="" class="img-circle img-responsive">
+                    </figure>
+                </div>
+            </div>            
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> {{ user.public_repos }}</strong></h2>                    
+                    <p><small>Public Repositories</small></p>
+                    {% if user.email != None %}
+                        <button class="btn btn-success btn-block"><a href ="mailto: {{user.email}}" target="_blank"><span class="fa fa-plus-circle"></span> Mail </button></a>
+                    {% endif %}
+                    </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>{{ user.public_gists }}</strong></h2>                    
+                    <p><small>Public Gists</small></p>
+
+                    <button class="btn btn-info btn-block"><a href = "https://github.com/{{ user.login }}" target="_blank"><span class="fa fa-user"></span> GitHub-Page </button>
+
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>{{ user.favourite_star }}</strong></h2>                    
+                    <p><medium><br><br>Followers:  {{user.followers}}</medium></p>
+                    <p><medium>Following:  {{user.following}}</medium></p>
+                    <div class="btn-group dropup btn-block">
+                      <ul class="dropdown-menu text-left" role="menu">
+                        <li><a href="mail:{{user.mail}}"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+    	 </div>                 
+		</div>
+	</div>
+</div>

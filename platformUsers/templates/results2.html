@@ -1,0 +1,42 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .p1 {
+          font-family: "Times New Roman", Times, serif;
+        }
+        
+        .p2 {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .p3 {
+          font-family: "Lucida Console", "Courier New", monospace;
+        }
+    </style>
+	<meta charset="UTF-8">
+
+	<title>Searching...</title>
+	<link rel="stylesheet" type = "text/css"
+     href="{% static '/index.css' %}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+    <center>
+      <br>
+      <br>
+      <br>
+      <br>
+      {% for user in users %}
+      <form action="/platformUsers/results2/" method="post" id="systemForm">
+        {% csrf_token %}
+        <div class="btn-group-vertical w-75">
+          <button type="submit" name="system" class="fill2" value= "{{user.login}}"" form="systemForm" class="btn btn-primary btn-lg btn-block"><p class="p1">{{ user.name }}.</p></button> 
+        </form>
+      {% endfor %}
+    </center>
+</body>
+</html>
