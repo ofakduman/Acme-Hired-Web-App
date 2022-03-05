@@ -16,12 +16,11 @@ KEYWORDS = []
 pool = []
 
 def search_keyword():
-    ACCESS_TOKEN = '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'
     global KEYWORDS
     global pool
 
     def search_github(keywords):
-        g = Github(ACCESS_TOKEN)
+        g = Github()
         keywords = [keyword.strip() for keyword in keywords.split(',')]
         query = '+'.join(keywords) + '+in:readme+in:description'
         print("keywords: " , keywords  , "\nquery: "  , query)
